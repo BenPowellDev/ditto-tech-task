@@ -115,7 +115,11 @@ class SignupPage:
         return error_found
         
     def has_captcha(self) -> bool:
-        return self.captcha.is_visible(timeout=5000)
+        """Check if captcha is present on the page."""
+        try:
+            return self.captcha.first.is_visible(timeout=5000)
+        except:
+            return False
         
     def has_success_indicator(self) -> bool:
         """Check if any success indicator is present."""
