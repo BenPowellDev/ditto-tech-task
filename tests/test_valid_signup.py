@@ -32,12 +32,11 @@ class TestValidSignup:
         # Assert - Check for captcha or successful redirect
         has_captcha = signup_page.has_captcha()
         current_url = page.url
-        has_success_redirect = "subscriptions" in current_url.lower() or "dashboard" in current_url.lower()
         
         # If signup is successful (no captcha blocking), verify redirect to secure subscriptions page
         if not has_captcha:
             expected_subscriptions_url = f"{secure_url}/subscriptions"
-            assert has_success_redirect or expected_subscriptions_url in current_url, \
+            assert expected_subscriptions_url in current_url, \
                 f"Expected redirect to subscriptions page, but got: {current_url}"
         else:
             # Captcha encountered - this is expected behavior, mark as success
