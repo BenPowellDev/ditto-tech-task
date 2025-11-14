@@ -130,18 +130,13 @@ pytest -v
 ```
 ditto-tech-task/
 ├── pages/
-│   ├── __init__.py
 │   ├── signup_page.py                  # Signup Page Object
 │   └── login_page.py                   # Login Page Object
 ├── tests/
-│   ├── __init__.py
 │   ├── test_valid_signup.py            # Valid signup test
 │   └── test_invalid_signup.py          # Invalid signup tests
 ├── utils/
-│   ├── __init__.py
 │   └── test_data.py                    # Test data generators
-├── scripts/
-│   └── run_browserstack.py             # BrowserStack integration (optional)
 ├── test-results/                       # Generated test artifacts
 │   ├── screenshots/                    # Screenshots
 │   └── traces/                         # Playwright traces
