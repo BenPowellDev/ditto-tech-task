@@ -26,10 +26,10 @@ def run_command(command, description):
             capture_output=True,
             text=True
         )
-        print(f"✅ {description} - SUCCESS")
+        print(f"{description} - SUCCESS")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"❌ {description} - FAILED")
+        print(f"{description} - FAILED")
         print(f"Error: {e.stderr}")
         return False
 
@@ -47,7 +47,7 @@ def main():
     
     # Check if in virtual environment
     if not check_venv():
-        print("⚠️  WARNING: Not running in a virtual environment!")
+        print("WARNING: Not running in a virtual environment!")
         print("It's recommended to create and activate a virtual environment first:")
         print("  python -m venv venv")
         print("  .\\venv\\Scripts\\Activate.ps1  (Windows PowerShell)")
@@ -58,7 +58,7 @@ def main():
             print("Setup cancelled.")
             return 1
     else:
-        print("✅ Virtual environment detected")
+        print("Virtual environment detected")
     
     print_header("INSTALLING DEPENDENCIES")
     
@@ -90,11 +90,11 @@ def main():
     dirs = ["test-results/screenshots", "test-results/traces", "test-results/videos"]
     for dir_path in dirs:
         Path(dir_path).mkdir(parents=True, exist_ok=True)
-    print("✅ Created test results directories")
+    print("Created test results directories")
     
     print_header("SETUP COMPLETE!")
     
-    print("🎉 Your test environment is ready!")
+    print("Your test environment is ready!")
     print()
     print("Next steps:")
     print("  1. Run tests: pytest -q")
