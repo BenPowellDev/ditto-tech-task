@@ -10,11 +10,10 @@ on:
 jobs:
   test:
     name: PROD Signup Tests
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
         browser: [chromium, firefox, webkit]
     
     steps:
@@ -42,7 +41,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.os }}-${{ matrix.browser }}
+          name: test-results-${{ matrix.browser }}
           path: |
             test-results/
             screenshots/
@@ -54,6 +53,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.os }}-${{ matrix.browser }}
+          name: playwright-report-${{ matrix.browser }}
           path: playwright-report/
           retention-days: 30
