@@ -2,6 +2,10 @@
 
 Automated testing for the Ditto Music signup flow using Playwright + Python + Pytest.
 
+## Video of tests in action
+
+[![Screenshot](https://img.youtube.com/vi/KRud1bawnBo/0.jpg)](https://youtu.be/KRud1bawnBo)
+
 ## Quick Start
 
 ```powershell
@@ -91,13 +95,6 @@ pytest --headed
    - `BASE_URL` for public pages (https://dittomusic.com/en)
    - `SECURE_URL` for authenticated pages (https://dashboard.dittomusic.com)
 
-### 6. **CI/CD Integration**
-   - **Two separate workflows**:
-     - `signupTestsLocal.yml` - Matrix testing (3 OS × 3 browsers)
-     - `signupTestsBrowserstack.yml` - Cloud testing integration
-   - Artifact upload for test results with 30-day retention
-   - Python 3.11 with pip caching for faster builds
-
 ## Configuration
 
 ### Run Options
@@ -132,22 +129,14 @@ pytest -v
 
 ```
 ditto-tech-task/
-├── .github/
-│   └── workflows/
-│       └── PROD-Signup-Tests.yml       # GitHub Actions CI/CD
 ├── pages/
-│   ├── __init__.py
 │   ├── signup_page.py                  # Signup Page Object
 │   └── login_page.py                   # Login Page Object
 ├── tests/
-│   ├── __init__.py
 │   ├── test_valid_signup.py            # Valid signup test
 │   └── test_invalid_signup.py          # Invalid signup tests
 ├── utils/
-│   ├── __init__.py
 │   └── test_data.py                    # Test data generators
-├── scripts/
-│   └── run_browserstack.py             # BrowserStack integration (optional)
 ├── test-results/                       # Generated test artifacts
 │   ├── screenshots/                    # Screenshots
 │   └── traces/                         # Playwright traces
