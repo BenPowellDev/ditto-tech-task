@@ -35,7 +35,6 @@ class SignupPage:
         self.captcha = page.locator('iframe[src*="recaptcha/api2/bframe"]')
         
     def navigate(self, base_url: str):
-        """Navigate to the signup page from base URL."""
         signup_url = f"{base_url.rstrip('/')}/signup"
         self.page.goto(signup_url, wait_until="domcontentloaded")
             
@@ -45,9 +44,7 @@ class SignupPage:
         password: str, 
         accept_promo: bool = True,
         accept_terms: bool = True
-    ):
-        """Fill out the signup form with provided details."""
-            
+    ):  
         # Wait for form to be visible and interactable
         self.email_input.wait_for(state="visible", timeout=10000)
         
@@ -87,7 +84,6 @@ class SignupPage:
         self.email_input.wait_for(state="visible", timeout=5000)
             
     def has_error(self, error_type: str = None) -> bool:
-
         # Map error types to their locators
         error_locators = {
             'email': (self.email_error, 3000),
@@ -115,14 +111,12 @@ class SignupPage:
         return error_found
         
     def has_captcha(self) -> bool:
-        """Check if captcha is present on the page."""
         try:
             return self.captcha.first.is_visible(timeout=5000)
         except:
             return False
         
     def has_success_indicator(self) -> bool:
-        """Check if any success indicator is present."""
         # Check for URL change (redirect)
         current_url = self.page.url
         if any(keyword in current_url for keyword in ["dashboard", "welcome", "verify", "subscriptions"]):

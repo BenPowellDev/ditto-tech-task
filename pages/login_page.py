@@ -29,18 +29,15 @@ class LoginPage:
         self.captcha = page.locator('iframe[src*="captcha"], [class*="captcha"], #captcha')
         
     def navigate(self, base_url: str):
-        """Navigate to the login page from base URL."""
         login_url = f"{base_url.rstrip('/')}/login"
         self.page.goto(login_url, wait_until="domcontentloaded")
 
     def click_sign_up_tab(self):
-        """Click on the Sign Up tab to switch to signup form."""
         self.sign_up_tab.wait_for(state="visible", timeout=5000)
         self.sign_up_tab.click()
         self.page.wait_for_load_state("networkidle")
         
     def fill_login_form(self, email: str, password: str):
-        """Fill out the login form with provided credentials."""
         # Wait for form to be visible
         self.email_input.wait_for(state="visible", timeout=10000)
         
@@ -53,17 +50,14 @@ class LoginPage:
         self.password_input.fill(password)
         
     def submit_login_form(self):
-        """Submit the login form."""
         self.continue_button.first.click()
         self.page.wait_for_load_state("networkidle")
         
     def login(self, email: str, password: str):
-        """Complete login flow: fill form and submit."""
         self.fill_login_form(email, password)
         self.submit_login_form()
         
     def has_success_indicator(self) -> bool:
-        """Check if any success indicator is present."""
         # Check for URL change (redirect to dashboard)
         current_url = self.page.url
         if "dashboard" in current_url or "welcome" in current_url or "account" in current_url:
@@ -76,14 +70,12 @@ class LoginPage:
         return False
         
     def is_authenticated(self) -> bool:
-        """Check if user is authenticated (redirected from login page)."""
         current_url = self.page.url
         # If we're not on login/signup page, we're likely authenticated
         is_on_auth_page = any(keyword in current_url.lower() for keyword in ["login", "signup", "sign-up"])
         return not is_on_auth_page
         
     def assert_no_authentication(self):
-        """Assert that user is not authenticated."""
         # Should still be on login/signup page
         current_url = self.page.url
         assert any(keyword in current_url.lower() for keyword in ["login", "signup", "sign-up"]), \
