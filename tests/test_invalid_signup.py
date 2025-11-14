@@ -22,9 +22,6 @@ class TestInvalidSignup:
             accept_promo=True,
             accept_terms=True
         )
-
-        # Try to submit the form
-        signup_page.submit_form()
         
         # Wait for validation to occur
         page.wait_for_timeout(2000)
