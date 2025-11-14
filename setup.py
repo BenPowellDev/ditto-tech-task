@@ -17,7 +17,7 @@ def print_header(text):
 
 def run_command(command, description):
     """Run a command and handle errors."""
-    print(f"⏳ {description}...")
+    print(f"{description}...")
     try:
         result = subprocess.run(
             command,
