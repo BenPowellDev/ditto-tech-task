@@ -4,7 +4,7 @@ Automated testing for the Ditto Music signup flow using Playwright + Python + Py
 
 ## Video of tests in action
 
-[![Screenshot](https://img.youtube.com/vi/KRud1bawnBo/0.jpg)]([https://youtu.be/KRud1bawnBo])
+[![Screenshot](https://img.youtube.com/vi/KRud1bawnBo/0.jpg)](https://youtu.be/KRud1bawnBo)
 
 ## Quick Start
 
